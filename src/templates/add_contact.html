@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Contact Saver</title>
+{% endblock %}
+
+
+{% block body %}
+
+<h2>Add Item</h2>
+
+<div class="main-content">
+    <div>
+        <form action="/addcontact" method="POST">
+            <input type="text" name="name" id="name" placeholder="contacts name" required>
+            <input type="text" name="phonenumber" id="phonenumber" placeholder="contacts phone number" required>
+            <input type="email" name="email" id="email" placeholder="contacts email" required>
+            <input type="submit" value="Add Contact">
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
