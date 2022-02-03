@@ -1,0 +1,41 @@
+body
+{
+    font-family: 'Lato', sans-serif;
+}
+
+body
+{
+    text-align: center;
+}
+
+h1
+{
+    font-size: 50px;
+}
+h2
+{
+    font-size: 30px;
+    font-weight: normal;
+}
+
+
+.main-content
+{
+    align-content: center;
+}
+
+.main-content form
+{
+    display: inline-flex;
+    flex-direction: column;
+    row-gap: 25px;
+    /* padding: 0px 50px 50px 50px; */
+    width: 400px;
+}
+
+.main-content form input
+{
+    height: 40px;
+    border-radius: 50px;
+    border-color: black;
+}

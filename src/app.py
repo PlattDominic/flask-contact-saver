@@ -36,8 +36,8 @@ def addContact():
         new_contact = Contact(name=contact_name, phonenumber=contact_phonenumber, email=contact_email)
 
         try:
-            db.session.add(new_contact)
-            db.session.commit()
+            #db.session.add(new_contact)
+            #db.session.commit()
             return redirect('/')
         except:
             return 'There was a issue when creating and adding the term'
