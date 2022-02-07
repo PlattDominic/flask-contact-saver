@@ -19,6 +19,26 @@ h2
 }
 
 
+.home-link
+{
+    text-decoration: none;
+}
+
+.home-link:visited
+{
+    text-decoration: none;
+    color: black;
+}
+
+.main-buttons
+{
+    height: 50px;
+    width: 320px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+}
+
 .main-content
 {
     align-content: center;
@@ -26,6 +46,7 @@ h2
 
 .main-content form
 {
+    margin-top: 3vh;
     display: inline-flex;
     flex-direction: column;
     row-gap: 25px;
@@ -36,6 +57,9 @@ h2
 .main-content form input
 {
     height: 40px;
-    border-radius: 50px;
-    border-color: black;
+    font-size: medium;
+    padding: 5px;
+    border: 2px solid gray;
+    border-radius: 25px;
 }
+
