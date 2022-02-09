@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Contact Saver</title>
+{% endblock %}
+
+
+{% block body %}
+
+{% if contacts|length < 1 %}
+
+{% else %}
+
+{% for contact in contacts %}
+
+<p>{{contact.name}}</p>
+<p>{{contact.phonenumber}}</p>
+<p>{{contact.email}}</p>
+
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

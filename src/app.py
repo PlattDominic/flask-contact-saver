@@ -1,3 +1,4 @@
+# https://github.com/pallets/flask
 from flask import Flask, render_template, url_for, request, redirect
 from flask.wrappers import Request
 from flask_sqlalchemy import SQLAlchemy 
@@ -20,10 +21,21 @@ class Contact(db.Model):
         return '<Contact %r>' % self.id
 
 
-
 @app.route('/')
 def Index():
-    return render_template('index.html')
+    if (request.args.get("search")):
+        search = request.args.get("search")
+        contacts = Contact.query.all()
+
+        search_result = list()
+
+        for contact in contacts:
+            if contact.name == search:
+                search_result.append(contact)
+
+        return render_template('search_result.html', contacts=search_result)
+    else:
+        return render_template('index.html')
 
 
 @app.route('/addcontact', methods=["GET", "POST"])
@@ -36,8 +48,8 @@ def addContact():
         new_contact = Contact(name=contact_name, phonenumber=contact_phonenumber, email=contact_email)
 
         try:
-            #db.session.add(new_contact)
-            #db.session.commit()
+            db.session.add(new_contact)
+            db.session.commit()
             return redirect('/')
         except:
             return 'There was a issue when creating and adding the term'

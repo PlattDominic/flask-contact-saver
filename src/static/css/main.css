@@ -19,6 +19,26 @@ h2
 }
 
 
+#searchinput
+{
+    height: 45px;
+    width: 310px;
+    font-size: 16px;
+    border: 2px solid gray;
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+#searchinput::-moz-placeholder
+{
+    text-align: center;
+}
+
+#searchinput:focus
+{
+    outline: none;
+}
+
 .home-link
 {
     text-decoration: none;
@@ -32,6 +52,7 @@ h2
 
 .main-buttons
 {
+    margin-top: 20px;
     height: 50px;
     width: 320px;
     font-size: 16px;
@@ -62,4 +83,5 @@ h2
     border: 2px solid gray;
     border-radius: 25px;
 }
+
 
