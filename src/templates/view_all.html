@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Contact Saver</title>
+{% endblock %}
+
+
+{% block body %}
+
+<div>
+    
+    <table>
+        <tr id="table-header">
+            <th>Name</th>
+            <th>Number</th>
+            <th>Email</th>
+        </tr>
+        {% for contact in contacts %}
+        <tr>
+            <td>{{contact.name}}</td>
+            <td>{{contact.phonenumber}}</td>
+            <td>{{contact.email}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

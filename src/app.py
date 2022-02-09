@@ -1,10 +1,13 @@
-# https://github.com/pallets/flask
+# Program uses code from the FLASK micro framework and SQLAlchemy
+# link to FLASK framework - https://github.com/pallets/flask
+# link to SQlAlchemy - https://www.sqlalchemy.org/
 from flask import Flask, render_template, url_for, request, redirect
 from flask.wrappers import Request
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
 import json
 
+# Creates an instance 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///appdictionary.db'
 db = SQLAlchemy(app)
@@ -21,23 +24,35 @@ class Contact(db.Model):
         return '<Contact %r>' % self.id
 
 
+def SearchContacts(contactList, searchItem):
+    search_result = list()
+
+    for item in contactList:
+        if item.name == searchItem:
+            search_result.append(item)
+    return search_result
+
+
 @app.route('/')
 def Index():
     if (request.args.get("search")):
         search = request.args.get("search")
         contacts = Contact.query.all()
 
-        search_result = list()
+        result = SearchContacts(contacts, search)
 
-        for contact in contacts:
-            if contact.name == search:
-                search_result.append(contact)
-
-        return render_template('search_result.html', contacts=search_result)
+        return render_template('search_result.html', contacts=result)
     else:
         return render_template('index.html')
 
+@app.route('/viewall')
+def viewAll():
+    contacts = Contact.query.all()
 
+    return render_template('view_all.html', contacts=contacts)
+
+
+#this is a blank line
 @app.route('/addcontact', methods=["GET", "POST"])
 def addContact():
     if request.method == 'POST':
