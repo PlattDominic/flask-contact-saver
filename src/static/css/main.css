@@ -66,6 +66,7 @@ table tbody tr {
 .home-link
 {
     text-decoration: none;
+    color: black;
 }
 
 .home-link:visited

@@ -30,6 +30,7 @@
             <td>{{contact.name}}</td>
             <td>{{contact.phonenumber}}</td>
             <td>{{contact.email}}</td>
+            <td display="block"><a class="red-flag" href="/deletecontact/{{contact.id}}">Delete</a></td>
         </tr>
         {% endfor %}
     </tbody>
