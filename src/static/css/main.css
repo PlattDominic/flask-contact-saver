@@ -21,18 +21,27 @@ h2
 
 table
 {
+    border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
     font-size: 20px;
 }
-#table-header
-{
-    background: red;
+table thead tr {
+    background-color: #FF525B;
+    color: #ffffff;
+    text-align: center;
 }
+table th,
 table td
 {
-    width: 250px;   
+    padding: 12px 15px;
 }
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+
+
 
 #searchinput
 {
@@ -78,11 +87,11 @@ table td
 .main-content
 {
     align-content: center;
+    margin-top: 6vh;
 }
 
 .main-content form
 {
-    margin-top: 3vh;
     display: inline-flex;
     flex-direction: column;
     row-gap: 25px;
@@ -99,3 +108,15 @@ table td
     border-radius: 25px;
 }
 
+.red-flag
+{
+    color: #FF425B;
+}
+.no-results
+{
+    font-size: 25px;
+}
+.info-label
+{
+    font-size: 19px;
+}

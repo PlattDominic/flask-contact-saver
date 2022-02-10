@@ -8,22 +8,34 @@
 
 {% block body %}
 
-<div>
+<div class="main-content">
     
+    <h2>View All Contacts</h2>
+    
+    {% if contacts|length < 1 %}
+
+    <h2 class="no-results">There are contacts to view</h2>
+    <a href="/addcontact"><h3>Add a Contact</h2></a>
+    
+    {% else %}
     <table>
-        <tr id="table-header">
+        <thead>
             <th>Name</th>
             <th>Number</th>
             <th>Email</th>
-        </tr>
-        {% for contact in contacts %}
-        <tr>
-            <td>{{contact.name}}</td>
-            <td>{{contact.phonenumber}}</td>
-            <td>{{contact.email}}</td>
-        </tr>
-        {% endfor %}
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{contact.name}}</td>
+                <td>{{contact.phonenumber}}</td>
+                <td>{{contact.email}}</td>
+                <td display="block"><a class="red-flag" href="/deletecontact/{{contact.id}}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
+    {% endif %}
 
 </div>
 

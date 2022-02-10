@@ -17,7 +17,7 @@ class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), nullable=False)
     phonenumber = db.Column(db.String(256), nullable=False)
-    email = db.Column(db.String(2048), nullable=False)
+    email = db.Column(db.String(2048), nullable=False, default="")
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
@@ -28,7 +28,7 @@ def SearchContacts(contactList, searchItem):
     search_result = list()
 
     for item in contactList:
-        if item.name == searchItem:
+        if item.name.lower() == searchItem or searchItem in item.name.lower():
             search_result.append(item)
     return search_result
 
@@ -36,7 +36,7 @@ def SearchContacts(contactList, searchItem):
 @app.route('/')
 def Index():
     if (request.args.get("search")):
-        search = request.args.get("search")
+        search = request.args.get("search").lower()
         contacts = Contact.query.all()
 
         result = SearchContacts(contacts, search)
@@ -65,14 +65,23 @@ def addContact():
         try:
             db.session.add(new_contact)
             db.session.commit()
-            return redirect('/')
+            return redirect('/viewall')
         except:
             return 'There was a issue when creating and adding the term'
     else:
         return render_template('add_contact.html')
 
 
+@app.route('/deletecontact/<int:id>')
+def delete(id):
+    delete_contact = Contact.query.get_or_404(id)
 
+    try:
+        db.session.delete(delete_contact)
+        db.session.commit()
+        return redirect('/viewall')
+    except:
+        return 'We ran into an issue while removing the contact, please try again'
 
 
 if __name__ == "__main__":

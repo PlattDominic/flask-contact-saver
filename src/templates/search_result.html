@@ -10,16 +10,31 @@
 
 {% if contacts|length < 1 %}
 
+<h2>There are no results to search</h2>
+<a href="/addcontact"><h3>Add a Contact</h2></a>
+
+
 {% else %}
 
-{% for contact in contacts %}
+<h2>Here are your results</h2>
 
-<p>{{contact.name}}</p>
-<p>{{contact.phonenumber}}</p>
-<p>{{contact.email}}</p>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Email</th>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+        <tr>
+            <td>{{contact.name}}</td>
+            <td>{{contact.phonenumber}}</td>
+            <td>{{contact.email}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-
-{% endfor %}
 
 {% endif %}
 
