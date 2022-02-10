@@ -52,18 +52,23 @@ def viewAll():
     return render_template('view_all.html', contacts=contacts)
 
 
-#this is a blank line
 @app.route('/addcontact', methods=["GET", "POST"])
 def addContact():
+    # Checks if the request is a POST request
     if request.method == 'POST':
+        # Get the contact information from the HTML form
         contact_name = request.form['name']
         contact_phonenumber = request.form['phonenumber']
         contact_email = request.form['email']
 
+        # Create a Contact object using the data from the form
         new_contact = Contact(name=contact_name, phonenumber=contact_phonenumber, email=contact_email)
 
         try:
+            # Add the new contact to the contact dictionary 
             db.session.add(new_contact)
+            
+            # Commit 
             db.session.commit()
             return redirect('/viewall')
         except:
