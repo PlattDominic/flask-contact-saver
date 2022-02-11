@@ -57,6 +57,10 @@ table tbody tr {
 {
     text-align: center;
 }
+#searchinput::-webkit-input-placeholder
+{
+    text-align: center;
+}
 
 #searchinput:focus
 {
